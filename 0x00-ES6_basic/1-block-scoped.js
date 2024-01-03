@@ -1,6 +1,5 @@
 /* eslint-disable no-var */
 /* eslint-disable no-unused-vars */
-/* eslint-disable prefer-const */
 
 export default function taskBlock(trueOrFalse) {
   var task = false;

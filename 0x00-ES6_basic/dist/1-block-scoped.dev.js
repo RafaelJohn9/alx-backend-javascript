@@ -8,8 +8,6 @@ exports["default"] = taskBlock;
 /* eslint-disable no-var */
 
 /* eslint-disable no-unused-vars */
-
-/* eslint-disable prefer-const */
 function taskBlock(trueOrFalse) {
   var task = false;
   var task2 = true;
