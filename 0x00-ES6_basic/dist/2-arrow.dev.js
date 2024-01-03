@@ -1,4 +1,3 @@
-#!/usr/bin/node
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
