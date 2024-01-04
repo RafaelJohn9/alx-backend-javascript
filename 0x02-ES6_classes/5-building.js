@@ -8,6 +8,6 @@ export default class Building {
   }
 
   get sqft() {
-    return this.__sqft;
+    return this._sqft;
   }
 }
