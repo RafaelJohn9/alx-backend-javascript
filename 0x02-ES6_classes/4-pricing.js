@@ -25,7 +25,7 @@ export default class Price {
 
   validateNumber(number) {
     if (typeof number !== 'number') {
-      throw new TypeError('Amount must be a number');
+      throw new TypeError('Amount/ConversionRate must be a number');
     } else {
       return (number);
     }
@@ -41,5 +41,9 @@ export default class Price {
 
   displayFullPrice() {
     return (`${this._amount} ${this._currency.displayFullCurrency()}`);
+  }
+
+  static convertPrice(amount, conversionRate) {
+    return (amount * conversionRate);
   }
 }
