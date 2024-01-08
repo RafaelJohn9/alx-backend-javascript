@@ -2,7 +2,7 @@ export default function cleanSet(set, startString) {
   let newString = '';
   let firstString = true;
 
-  if (startString.length === 0) {
+  if (startString.length === 0 || set.size === 0) {
     return newString;
   }
   for (const string of set) {
