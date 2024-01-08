@@ -2,7 +2,7 @@
 export default function cleanSet(set, startString) {
   let resultString = '';
   let firstMatch = true;
-  if (startString === 0 || set.size === 0) {
+  if (startString.length === 0 || set.size === 0) {
     return resultString;
   }
   for (const value of set) {
