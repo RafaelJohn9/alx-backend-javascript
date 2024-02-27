@@ -18,7 +18,7 @@ function countStudents(path) {
               // eslint-disable-next-line no-continue
               continue;
             }
-            if (line !== '') {
+            if (line.trim() !== '' || line.trim() !== '\n') {
               const student = line.split(',');
               if (!students[student[3]]) {
                 students[student[3]] = [];
