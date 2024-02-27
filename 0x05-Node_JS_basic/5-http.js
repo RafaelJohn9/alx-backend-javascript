@@ -42,16 +42,16 @@ function getStudentsData(path) {
 const app = http.createServer((req, res) => {
   if (req.url === '/') {
     res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.end('Hello Holberton School!\n');
+    res.end('Hello Holberton School!');
   } else if (req.url === '/students') {
     getStudentsData(process.argv[2])
       .then(({ totalStudents, details }) => {
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.write('This is the list of our students\n');
-        res.write(`Number of students: ${totalStudents}\n`);
+        res.write(`Number of students: ${totalStudents}`);
         Object.keys(details).forEach((field) => {
           const numStudents = details[field].length;
-          res.write(`Number of students in ${field}: ${numStudents}. List: ${details[field].join(', ')}\n`);
+          res.write(`\nNumber of students in ${field}: ${numStudents}. List: ${details[field].join(', ')}`);
         });
         res.end();
       })
