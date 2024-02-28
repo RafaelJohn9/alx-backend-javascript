@@ -65,6 +65,7 @@ app.get('/students', (req, res) => {
     })
     .catch((error) => {
       res.writeHead(500, { 'Content-Type': 'text/plain' });
+      res.write('This is the list of our students\n');
       res.end(`${error.message}\n`);
     });
 });
