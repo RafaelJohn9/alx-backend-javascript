@@ -19,6 +19,11 @@ function getStudentsData(path) {
       }
 
       const students = {};
+      for (const line of lines) {
+        if (line === '') {
+          lines.pop(line);
+        }
+      }
 
       lines.slice(1).forEach((line) => {
         const fields = line.split(',');
