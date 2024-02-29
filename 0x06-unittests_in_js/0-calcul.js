@@ -5,6 +5,6 @@
  * @b: second_input
  */
 
-module.exports = function calculateNumber(a, b){
-	return(Math.round(a) + Math.round(b))
-}
+module.exports = function calculateNumber (a, b) {
+  return (Math.round(a) + Math.round(b));
+};
