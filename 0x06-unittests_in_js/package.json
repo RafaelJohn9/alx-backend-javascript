@@ -1,0 +1,17 @@
+{
+  "name": "tests",
+  "version": "1.0.0",
+  "description": "Practicing testing on nodejs",
+  "main": "index.js",
+  "scripts": {
+	  "test": "mocha",
+	  "test:watch": "mocha --watch",
+	  "test:spec": "mocha --recursive --reporter spec",
+	  "test:coverage": "nyc mocha"
+  },
+  "author": "JohnKagunda",
+  "license": "ISC",
+  "dependencies": {
+    "mocha": "^10.3.0"
+  }
+}
