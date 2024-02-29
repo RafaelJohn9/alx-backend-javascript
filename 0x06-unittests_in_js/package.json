@@ -1,17 +1,17 @@
 {
-  "name": "tests",
+  "name": "0x06-unittests_in_js",
   "version": "1.0.0",
-  "description": "Practicing testing on nodejs",
-  "main": "index.js",
+  "description": "",
+  "main": "0-calcul.js",
   "scripts": {
-	  "test": "mocha",
-	  "test:watch": "mocha --watch",
-	  "test:spec": "mocha --recursive --reporter spec",
-	  "test:coverage": "nyc mocha"
+    "test": "mocha --require chai/register-expect 2-calcul_chai.test.js"
   },
-  "author": "JohnKagunda",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
   "dependencies": {
-    "mocha": "^10.3.0"
+    "chai": "^4.3.0",
+    "mocha": "^6.2.2",
+    "sinon": "^7.5.0"
   }
 }

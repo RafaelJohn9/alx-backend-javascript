@@ -1,10 +1,7 @@
-#!/usr/bin/node
-/**
- * calculateNumber: sums up the a and b
- * @a: first_input
- * @b: second_input
- */
+function calculateNumber (a, b){
+    a = Math.round(a)
+    b = Math.round(b)
+    return a + b
+}
 
-module.exports = function calculateNumber (a, b) {
-  return (Math.round(a) + Math.round(b));
-};
+module.exports = calculateNumber;
