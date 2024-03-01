@@ -10,8 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "chai": "^4.3.0",
-    "mocha": "^6.2.2",
+    "chai": "^5.1.0",
+    "mocha": "^10.3.0",
     "sinon": "^7.5.0"
   }
 }
