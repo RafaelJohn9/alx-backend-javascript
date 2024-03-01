@@ -4,7 +4,7 @@
   "description": "",
   "main": "0-calcul.js",
   "scripts": {
-    "test": "mocha --require chai/register-expect 2-calcul_chai.test.js"
+    "test": "mocha --require chai/register-expect.js"
   },
   "keywords": [],
   "author": "",
