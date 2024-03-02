@@ -2,10 +2,7 @@
  * Utils - contains basic methods
  */
 
-class Utils{
-    constructor(){
-    }
-
+const Utils = {
     // used to do basic arithmetic functions
     calculateNumber (type, a, b){
        a = Math.round(a);
