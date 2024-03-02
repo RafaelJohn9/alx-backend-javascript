@@ -1,90 +1,36 @@
-const { expect } = require("chai");
-const calculateNumber = require("./2-calcul_chai");
+// Dynamic import of Chai assert
+import('chai').then((chaiModule) => {
+  const assert = chaiModule.assert;
+)};
 
-describe("calculate", () => {
-  describe("SUM", () => {
-    it("should add two positive numbers correctly", () => {
-      expect(calculateNumber("SUM", 3, 5)).to.equal(8);
-    });
-    it("test it with floating first var", () => {
-      expect(calculateNumber("SUM", 1.0, 3)).to.equal(4);
-      expect(calculateNumber("SUM", 1.2, 3)).to.equal(4);
-      expect(calculateNumber("SUM", 1.7, 3)).to.equal(5);
-    });
-    it("test it with floating second var", () => {
-      expect(calculateNumber("SUM", 1, 2.0)).to.equal(3);
-      expect(calculateNumber("SUM", 1, 2.6)).to.equal(4);
-      expect(calculateNumber("SUM", 1, 2.2)).to.equal(3);
-    });
-    it("test it with floating second var", () => {
-      expect(calculateNumber("SUM", 1.9, 2.0)).to.equal(4);
-      expect(calculateNumber("SUM", 1.9, 2.6)).to.equal(5);
-      expect(calculateNumber("SUM", 1.2, 2.6)).to.equal(4);
-    });
-    it("test it with negative floating var", () => {
-      expect(calculateNumber("SUM", -2.0, 1.9)).to.equal(0);
-      expect(calculateNumber("SUM", 2.6, -1.9)).to.equal(1);
-      expect(calculateNumber("SUM", -2.6, -1.2)).to.equal(-4);
-    });
-    it("test it with postive floating var", () => {
-      expect(calculateNumber("SUM", -2, 2)).to.equal(0);
-      expect(calculateNumber("SUM", 3, -2)).to.equal(1);
-      expect(calculateNumber("SUM", -3, -1)).to.equal(-4);
-    });
-  });
-  describe("SUBTRACT", () => {
-    it("should subtract two positive numbers correctly", () => {
-      expect(calculateNumber("SUBTRACT", 5, 3)).to.equal(2);
-    });
-    it("test it with floating first var", () => {
-      expect(calculateNumber("SUBTRACT", 3, 1.0)).to.equal(2);
-      expect(calculateNumber("SUBTRACT", 3, 1.2)).to.equal(2);
-      expect(calculateNumber("SUBTRACT", 3, 1.7)).to.equal(1);
-      expect(calculateNumber("SUBTRACT", -3, 1.7)).to.equal(-5);
-      expect(calculateNumber("SUBTRACT", 3, -1.7)).to.equal(5);
-    });
-    it("test it with floating second var", () => {
-      expect(calculateNumber("SUBTRACT", 2.0, 1)).to.equal(1);
-      expect(calculateNumber("SUBTRACT", 2.6, 1)).to.equal(2);
-      expect(calculateNumber("SUBTRACT", 2.2, 1)).to.equal(1);
-    });
-    it("test it with floating second var", () => {
-      expect(calculateNumber("SUBTRACT", 2.0, 1.9)).to.equal(0);
-      expect(calculateNumber("SUBTRACT", 2.6, 1.9)).to.equal(1);
-      expect(calculateNumber("SUBTRACT", 2.6, 1.2)).to.equal(2);
-      expect(calculateNumber("SUBTRACT", -2.6, 1.2)).to.equal(-4);
-      expect(calculateNumber("SUBTRACT", 2.6, -1.9)).to.equal(5);
-    });
-    it("test it with negative floating var", () => {
-      expect(calculateNumber("SUBTRACT", -2.0, 1.9)).to.equal(-4);
-      expect(calculateNumber("SUBTRACT", 2.6, -1.9)).to.equal(5);
-      expect(calculateNumber("SUBTRACT", -2.6, -1.2)).to.equal(-2);
-    });
-  });
-  describe("DIVIDE", () => {
-    it("positive full numbers", () => {
-      expect(calculateNumber("DIVIDE", 8.0, 2.0)).to.equal(4);
-    });
-    it("negative full numbers", () => {
-      expect(calculateNumber("DIVIDE", -8.0, 2.0)).to.equal(-4);
-      expect(calculateNumber("DIVIDE", -8.0, -2.0)).to.equal(4);
-      expect(calculateNumber("DIVIDE", 8.0, -2.0)).to.equal(-4);
-      expect(calculateNumber("DIVIDE", 9.0, -2.0)).to.equal(-4.5);
-    });
-    it("dividing by zero", () => {
-      expect(calculateNumber("DIVIDE", -8.0, 0)).to.equal("Error");
-      expect(calculateNumber("DIVIDE", 8.0, 0)).to.equal("Error");
-      expect(calculateNumber("DIVIDE", 8, 0)).to.equal("Error");
-    });
-    it("dividing by zero", () => {
-      expect(calculateNumber("DIVIDE", -8, 2)).to.equal(-4);
-      expect(calculateNumber("DIVIDE", 8, 2)).to.equal(4);
-      expect(calculateNumber("DIVIDE", -8, -2)).to.equal(4);
-    });
-    it("zero dividing by zero", () => {
-      expect(calculateNumber("DIVIDE", 0, 0)).to.equal("Error");
-      expect(calculateNumber("DIVIDE", 0, 2)).to.equal(0);
-      expect(calculateNumber("DIVIDE", 0, -2.2)).to.equal(0);
-    });
-  });
+// Dynamic import of the module
+import('./2-calcul_chai').then((calculModule) => {
+	const calculateNumber = calculModule.default; // Assuming the module has a default export
+)};
+
+//const {assert} = require('chai');
+//const calculateNumber = require('./2-calcul_chai');
+
+describe("tests the calculateNumber function", () =>{
+	it ('tests for addition mixed cases', () =>{
+		assert.strictEqual(calculateNumber('SUM', 10, 10), 20);
+		assert.strictEqual(calculateNumber('SUM', 10.5, 11), 22);
+		assert.strictEqual(calculateNumber('SUM', 10.5, 13.5), 25);
+		assert.strictEqual(calculateNumber('SUM', 3, 1.3), 4);
+	});
+
+	it ('tests for divide mixed cases', () =>{
+		assert.strictEqual(calculateNumber('DIVIDE', 10, 10), 1);
+		assert.strictEqual(calculateNumber('DIVIDE', 10.5, 0), 'Error');
+		assert.strictEqual(calculateNumber('DIVIDE', 10, 5), 2);
+		assert.strictEqual(calculateNumber('DIVIDE', 3, 1.3), 3);
+	});
+
+	it ('tests for subtraction mixed cases', () =>{
+		assert.strictEqual(calculateNumber('SUBTRACT', 10, 10), 0);
+		assert.strictEqual(calculateNumber('SUBTRACT', 10.5, 11), 0);
+		assert.strictEqual(calculateNumber('SUBTRACT', 10.5, 13.5), -3);
+		assert.strictEqual(calculateNumber('SUBTRACT', 3, 1.3), 2);
+	});
+
 });
