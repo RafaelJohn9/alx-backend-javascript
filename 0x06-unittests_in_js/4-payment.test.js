@@ -41,8 +41,13 @@ describe("tests if the request sent to the API is correct", ()=>{
 		const stub = sinon.stub(Utils, "calculateNumber").returns(10);
 		const consoleLogSpy = sinon.spy(console, "log");
 		sendPaymentRequestToApi(100, 20);
-		stub.assert.calledWithExactly("SUM", 100, 20);
+
+		expect(stub.assert.calledWithExactly("SUM", 100, 20)).to.be.true;
+		expect(stub.callCount).to.be.equal(1);
+
 		assert.strictEqual(consoleLogSpy.firstCall.args[0], `The total is: 10`)
+		expect(consoleLogSpy.callCount).to.be.equal(1);
+
 		stub.restore();
 		consoleLogSpy.restore();
 	});
