@@ -38,14 +38,13 @@ describe("tests if the request sent to the API is correct", ()=>{
 	});
 
 	it("Stubbing utils.calculateNumber to return a certain value", () =>{
-		const stub = sinon.stub(Utils, "calculateNumber");
-		stub.returns(10);
-		stub.assert.calledWith(stub,"SUM", 100, 20);
+		const stub = sinon.stub(Utils, "calculateNumber").returns(10);
 		const consoleLogSpy = sinon.spy(console, "log");
 		sendPaymentRequestToApi(100, 20);
+		stub.assert.calledWithExactly("SUM", 100, 20);
 		assert.strictEqual(consoleLogSpy.firstCall.args[0], `The total is: 10`)
-		stub.restore()
+		stub.restore();
 		consoleLogSpy.restore();
 	});
 
-})
+});
